@@ -72,6 +72,24 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         return frame
     }
     
+    private func startAnimatiingView(view: UIView, containerView: UIView, direction: Direction, fade: Bool) {
+        if fade {
+            view.frame = presentedFrameInContainerView(containerView)
+            view.alpha = 0.0
+        } else {
+            view.frame = dismissedFrameInContainerView(containerView, direction: direction)
+        }
+    }
+
+    private func animationStartView(view: UIView, containerView: UIView, direction: Direction, fade: Bool) {
+        if fade {
+            view.frame = presentedFrameInContainerView(containerView)
+            view.alpha = 0.0
+        } else {
+            view.frame = dismissedFrameInContainerView(containerView, direction: direction)
+        }
+    }
+
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
